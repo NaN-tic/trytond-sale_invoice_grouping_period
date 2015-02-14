@@ -1,5 +1,5 @@
-#The COPYRIGHT file at the top level of this repository contains the full
-#copyright notices and license terms.
+# The COPYRIGHT file at the top level of this repository contains the full
+# copyright notices and license terms.
 from sql import Cast, Literal
 from sql.aggregate import Max
 from sql.functions import Substring, Position
