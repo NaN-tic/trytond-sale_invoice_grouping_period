@@ -18,4 +18,6 @@ class Party:
     __name__ = 'party.party'
 
     sale_invoice_grouping_period = fields.Property(fields.Selection(
-            GROUPING_PERIODS, 'Sale Invoice Grouping Period'))
+            GROUPING_PERIODS, 'Sale Invoice Grouping Period', states={
+                'invisible': Eval('sale_invoice_grouping_method') == None,
+                }, depends=['sale_invoice_grouping_method']))
