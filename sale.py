@@ -46,7 +46,16 @@ class Sale:
             interval_date = relativedelta(weeks=2)
             min_date = datetime.date(self.sale_date.year, self.sale_date.month,
                 1 if self.sale_date.day <= 15 else 15)
-
+        elif period == 'ten-days':
+            interval_date = relativedelta(days=10)
+            if self.sale_date.day <= 10:
+                day = 1
+            elif self.sale_date.day <= 20:
+                day = 11
+            else:
+                day = 21
+            min_date = datetime.date(self.sale_date.year, self.sale_date.month,
+                day)
         return max(min_date, (self.sale_date - interval_date))
 
     def _get_maximum_invoice_date(self):
@@ -63,7 +72,16 @@ class Sale:
             interval_date = relativedelta(weeks=2)
             max_date = datetime.date(self.sale_date.year, self.sale_date.month,
                 15 if self.sale_date.day <= 15 else last_day)
-
+        elif period == 'ten-days':
+            interval_date = relativedelta(days=10)
+            if self.sale_date.day <= 10:
+                day = 1
+            elif self.sale_date.day <= 20:
+                day = 11
+            else:
+                day = 21
+            max_date = datetime.date(self.sale_date.year, self.sale_date.month,
+                day)
         return min(max_date, (self.sale_date + interval_date))
 
     def _get_invoice_sale(self, invoice_type):

@@ -12,6 +12,7 @@ GROUPING_PERIODS = [
     (None, 'Standard'),
     ('biweekly', 'Biweekly'),
     ('monthly', 'Monthly'),
+    ('ten-days', 'Every Ten Days'),
     ]
 
 
