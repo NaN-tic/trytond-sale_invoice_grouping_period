@@ -11,4 +11,4 @@ def register():
         Party,
         Sale,
         Invoice,
-        module='sale_invoice_period', type_='model')
+        module='sale_invoice_grouping_period', type_='model')

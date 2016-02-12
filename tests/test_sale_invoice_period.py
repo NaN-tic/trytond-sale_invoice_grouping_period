@@ -10,11 +10,11 @@ class TestCase(unittest.TestCase):
     'Test module'
 
     def setUp(self):
-        trytond.tests.test_tryton.install_module('sale_invoice_period')
+        trytond.tests.test_tryton.install_module('sale_invoice_grouping_period')
 
     def test0005views(self):
         'Test views'
-        test_view('sale_invoice_period')
+        test_view('sale_invoice_grouping_period')
 
     def test0006depends(self):
         'Test depends'
