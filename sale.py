@@ -26,7 +26,7 @@ class Sale:
                     for move in iline.stock_moves:
                         date = move.effective_date
                         break
-        else:
+        if date is None:
             date = self.sale_date
         return date
 
