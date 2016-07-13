@@ -66,10 +66,10 @@ class Sale:
 
         return min(max_date, (self.sale_date + interval_date))
 
-    def _get_invoice_sale(self, invoice_type):
+    def _get_invoice_sale(self):
         pool = Pool()
         Lang = pool.get('ir.lang')
-        invoice = super(Sale, self)._get_invoice_sale(invoice_type)
+        invoice = super(Sale, self)._get_invoice_sale()
         period = self.party.sale_invoice_grouping_period
         if period:
             for code in [Transaction().language, 'en_US']:
