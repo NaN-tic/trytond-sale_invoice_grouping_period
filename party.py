@@ -3,7 +3,7 @@
 
 from trytond.model import fields
 from trytond.pool import PoolMeta
-from trytond.pyson import Eval, Bool
+from trytond.pyson import Eval
 
 __all__ = ['Party']
 
@@ -20,5 +20,6 @@ class Party:
 
     sale_invoice_grouping_period = fields.Property(fields.Selection(
             GROUPING_PERIODS, 'Sale Invoice Grouping Period', states={
-                'invisible': ~Bool(Eval('sale_invoice_grouping_method')),
+                'invisible': Eval('sale_invoice_grouping_method').in_(
+                    [None, 'standalone']),
                 }, depends=['sale_invoice_grouping_method']))
