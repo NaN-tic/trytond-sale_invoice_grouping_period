@@ -8,11 +8,11 @@ from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
 __all__ = ['Sale']
-__metaclass__ = PoolMeta
 
 
 class Sale:
     __name__ = 'sale.sale'
+    __metaclass__ = PoolMeta
 
     def _get_grouped_invoice_order(self):
         res = super(Sale, self)._get_grouped_invoice_order()

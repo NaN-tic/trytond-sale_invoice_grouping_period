@@ -10,11 +10,11 @@ from trytond.model import fields
 from .party import GROUPING_PERIODS
 
 __all__ = ['Invoice']
-__metaclass__ = PoolMeta
 
 
 class Invoice:
     __name__ = 'account.invoice'
+    __metaclass__ = PoolMeta
 
     sale_date = fields.Function(fields.Date('Sale Date'),
         'get_sale_date', searcher='search_sale_date')
