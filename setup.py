@@ -57,7 +57,7 @@ if minor_version % 2:
 
 setup(name=name,
     version=version,
-    description='Tryton Account Asset P Module',
+    description='Tryton Sale Invoice Grouping Period Module',
     long_description=read('README'),
     author='NaN-tic',
     author_email='',
