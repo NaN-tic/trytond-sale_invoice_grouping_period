@@ -72,7 +72,7 @@ class Sale:
         invoice = super(Sale, self)._get_invoice_sale()
         period = self.party.sale_invoice_grouping_period
         if period:
-            for code in [Transaction().language, 'en_US']:
+            for code in [Transaction().language, 'en']:
                 langs = Lang.search([
                         ('code', '=', code),
                         ])
