@@ -6,7 +6,6 @@ from trytond.pool import PoolMeta
 from trytond.pyson import Eval, Bool
 
 __all__ = ['Party']
-__metaclass__ = PoolMeta
 
 GROUPING_PERIODS = [
     (None, 'Standard'),
@@ -17,6 +16,7 @@ GROUPING_PERIODS = [
 
 class Party:
     __name__ = 'party.party'
+    __metaclass__ = PoolMeta
 
     sale_invoice_grouping_period = fields.Property(fields.Selection(
             GROUPING_PERIODS, 'Sale Invoice Grouping Period', states={
