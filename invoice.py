@@ -26,8 +26,13 @@ class Invoice:
     def get_sale_date(self, name):
         pool = Pool()
         SaleLine = pool.get('sale.line')
-        if self.origin and isinstance(self.origin, SaleLine):
-            return self.origin.sale.sale_date
+        dates = []
+        for line in self.lines:
+            if line.origin and isinstance(line.origin, SaleLine):
+                dates.append(line.origin.sale.sale_date)
+        if dates:
+            return max(dates)
+        return None
 
     @classmethod
     def search_sale_date(cls, name, clause):

@@ -196,6 +196,8 @@ Check the invoices::
     >>> len(invoices)
     1
     >>> invoice, = invoices
+    >>> invoice.sale_date == next_biweekly
+    True
     >>> len(invoice.lines)
     3
     >>> invoice.lines[0].quantity
