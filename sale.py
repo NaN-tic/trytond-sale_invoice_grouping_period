@@ -3,7 +3,6 @@
 from dateutil.relativedelta import relativedelta
 import datetime
 import calendar
-
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
@@ -16,6 +15,7 @@ class Sale:
 
     def _get_grouped_invoice_order(self):
         res = super(Sale, self)._get_grouped_invoice_order()
+
         if not res:
             return [('invoice_date', 'DESC')]
         return res
@@ -46,6 +46,9 @@ class Sale:
             interval_date = relativedelta(weeks=2)
             min_date = datetime.date(self.sale_date.year, self.sale_date.month,
                 1 if self.sale_date.day <= 15 else 15)
+        elif period == 'daily':
+            interval_date = relativedelta(day=0)
+            min_date = datetime.date.today()
 
         return max(min_date, (self.sale_date - interval_date))
 
@@ -63,13 +66,17 @@ class Sale:
             interval_date = relativedelta(weeks=2)
             max_date = datetime.date(self.sale_date.year, self.sale_date.month,
                 15 if self.sale_date.day <= 15 else last_day)
+        elif period == 'daily':
+            interval_date = relativedelta(day=0)
+            max_date = datetime.date.today()
 
         return min(max_date, (self.sale_date + interval_date))
 
     def _get_invoice_sale(self):
-        pool = Pool()
-        Lang = pool.get('ir.lang')
+        Lang = Pool().get('ir.lang')
+
         invoice = super(Sale, self)._get_invoice_sale()
+
         period = self.party.sale_invoice_grouping_period
         if period:
             for code in [Transaction().language, 'en_US']:

@@ -4,7 +4,6 @@ from sql import Cast, Literal
 from sql.aggregate import Max
 from sql.functions import Substring, Position
 from sql.operators import Like
-
 from trytond.pool import Pool, PoolMeta
 from trytond.model import fields
 from .party import GROUPING_PERIODS
@@ -24,8 +23,8 @@ class Invoice:
         searcher='search_invoice_grouping_period')
 
     def get_sale_date(self, name):
-        pool = Pool()
-        SaleLine = pool.get('sale.line')
+        SaleLine = Pool().get('sale.line')
+
         dates = []
         for line in self.lines:
             if line.origin and isinstance(line.origin, SaleLine):
@@ -40,6 +39,7 @@ class Invoice:
         InvoiceLine = pool.get('account.invoice.line')
         Sale = pool.get('sale.sale')
         SaleLine = pool.get('sale.line')
+
         _, operator, value = clause
         Operator = fields.SQL_OPERATORS[operator]
         table = InvoiceLine.__table__()

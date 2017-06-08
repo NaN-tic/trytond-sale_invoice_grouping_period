@@ -19,6 +19,10 @@ msgid "Biweekly"
 msgstr "Quinzenal"
 
 msgctxt "selection:account.invoice,invoice_grouping_period:"
+msgid "Daily"
+msgstr "Diariament"
+
+msgctxt "selection:account.invoice,invoice_grouping_period:"
 msgid "Monthly"
 msgstr "Mensual"
 
