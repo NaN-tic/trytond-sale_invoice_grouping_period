@@ -60,9 +60,13 @@ class Invoice:
                     )
         return [('id', 'in', query)]
 
-    def get_invoice_grouping_period(self, name):
-        if self.party:
-            return self.party.sale_invoice_grouping_period
+    @classmethod
+    def get_invoice_grouping_period(cls, invoices, name):
+        grouping = {}
+        for invoice in invoices:
+            grouping[invoice.id] = invoice.party.sale_invoice_grouping_period \
+                    if invoice.party else None
+        return grouping
 
     @classmethod
     def search_invoice_grouping_period(cls, name, clause):
