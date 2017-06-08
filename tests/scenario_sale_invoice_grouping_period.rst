@@ -7,23 +7,30 @@ Imports::
     >>> import datetime
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
-    >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from proteus import config, Model, Wizard
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
     ...     create_chart, get_accounts
     >>> from trytond.modules.account_invoice.tests.tools import \
-    ...     set_fiscalyear_invoice_sequences
+    ...     set_fiscalyear_invoice_sequences, create_payment_term
     >>> today = datetime.date.today()
     >>> start_month = today + relativedelta(day=1)
     >>> same_biweekly = today + relativedelta(day=10)
     >>> next_biweekly = today + relativedelta(day=20)
     >>> next_month = today + relativedelta(months=1)
 
-Install sale_invoice_grouping::
+Create database::
 
-    >>> config = activate_modules('sale_invoice_grouping_period')
+    >>> config = config.set_trytond()
+    >>> config.pool.test = True
+
+Install sale_invoice_grouping_grouping_perior::
+
+    >>> Module = Model.get('ir.module')
+    >>> sale_module, = Module.find([('name', '=', 'sale_invoice_grouping_period')])
+    >>> sale_module.click('install')
+    >>> Wizard('ir.module.install_upgrade').execute('upgrade')
 
 Create company::
 
@@ -64,6 +71,11 @@ Create chart of accounts::
     >>> accounts = get_accounts(company)
     >>> revenue = accounts['revenue']
     >>> expense = accounts['expense']
+
+Create payment term::
+
+    >>> payment_term = create_payment_term()
+    >>> payment_term.save()
 
 Create parties::
 
@@ -108,6 +120,7 @@ Sale some products::
     >>> sale = Sale()
     >>> sale.party = customer
     >>> sale.invoice_method = 'order'
+    >>> sale.payment_term = payment_term
     >>> sale_line = sale.lines.new()
     >>> sale_line.product = product
     >>> sale_line.quantity = 2.0
