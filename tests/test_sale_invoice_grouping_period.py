@@ -9,14 +9,15 @@ from trytond.tests.test_tryton import doctest_teardown
 from trytond.tests.test_tryton import doctest_checker
 
 
-class TestCase(ModuleTestCase):
-    'Test module'
+class SaleInvoiceGroupingPeriodTestCase(ModuleTestCase):
+    'Test Sale Invoice Grouping Period module'
     module = 'sale_invoice_grouping_period'
 
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestCase))
+    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
+            SaleInvoiceGroupingPeriodTestCase))
     suite.addTests(doctest.DocFileSuite(
             'scenario_sale_invoice_grouping_period.rst',
             tearDown=doctest_teardown, encoding='utf-8',
