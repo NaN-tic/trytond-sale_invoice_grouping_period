@@ -70,6 +70,10 @@ Create parties::
     >>> Party = Model.get('party.party')
     >>> customer = Party(name='Customer')
     >>> customer.save()
+    >>> customer_daily = Party(name='Customer Daily')
+    >>> customer_daily.sale_invoice_grouping_method = 'standard'
+    >>> customer_daily.sale_invoice_grouping_period = 'daily'
+    >>> customer_daily.save()
     >>> customer_biweekly = Party(name='Customer BiWeekly')
     >>> customer_biweekly.sale_invoice_grouping_method = 'standard'
     >>> customer_biweekly.sale_invoice_grouping_period = 'biweekly'
@@ -139,6 +143,99 @@ Check the invoices::
     >>> invoice.click('post')
     >>> invoice.state
     u'posted'
+
+Now we'll use the same scenario with the daily customer::
+
+    >>> config.user = sale_user.id
+    >>> sale = Sale()
+    >>> sale.party = customer_daily
+    >>> sale.sale_date = today
+    >>> sale.invoice_method = 'order'
+    >>> sale_line = sale.lines.new()
+    >>> sale_line.product = product
+    >>> sale_line.quantity = 1.0
+    >>> sale.click('quote')
+    >>> sale.click('confirm')
+    >>> sale.click('process')
+    >>> sale.state
+    u'processing'
+
+Make another sale::
+
+    >>> sale = Sale()
+    >>> sale.party = customer_daily
+    >>> sale.sale_date = today
+    >>> sale.invoice_method = 'order'
+    >>> sale_line = sale.lines.new()
+    >>> sale_line.product = product
+    >>> sale_line.quantity = 2.0
+    >>> sale.click('quote')
+    >>> sale.click('confirm')
+    >>> sale.click('process')
+    >>> sale.state
+    u'processing'
+
+Make another sale::
+
+    >>> sale = Sale()
+    >>> sale.party = customer_daily
+    >>> sale.sale_date = today + relativedelta(day=1)
+    >>> sale.invoice_method = 'order'
+    >>> sale_line = sale.lines.new()
+    >>> sale_line.product = product
+    >>> sale_line.quantity = 3.0
+    >>> sale.click('quote')
+    >>> sale.click('confirm')
+    >>> sale.click('process')
+    >>> sale.state
+    u'processing'
+
+Check the invoices::
+
+    >>> config.user = account_user.id
+    >>> invoices = Invoice.find([
+    ...     ('party', '=', customer_daily.id),
+    ...     ('sale_date', '=', today),
+    ...     ('state', '=', 'draft'),
+    ...     ])
+    >>> len(invoices)
+    1
+    >>> invoice, = invoices
+    >>> invoice.sale_date == today
+    True
+    >>> len(invoice.lines)
+    2
+    >>> invoice.lines[0].quantity
+    1.0
+    >>> invoice.lines[1].quantity
+    2.0
+
+Create a sale for the next day::
+
+    >>> config.user = sale_user.id
+    >>> sale = Sale()
+    >>> sale.party = customer_daily
+    >>> sale.sale_date = today + datetime.timedelta(days=1)
+    >>> sale.invoice_method = 'order'
+    >>> sale_line = sale.lines.new()
+    >>> sale_line.product = product
+    >>> sale_line.quantity = 4.0
+    >>> sale.click('quote')
+    >>> sale.click('confirm')
+    >>> sale.click('process')
+    >>> sale.state
+    u'processing'
+
+A new invoice is created::
+
+    >>> config.user = account_user.id
+    >>> invoices = Invoice.find([
+    ...     ('party', '=', customer_daily.id),
+    ...     ('sale_date', '>=', today),
+    ...     ('state', '=', 'draft'),
+    ...     ])
+    >>> len(invoices)
+    2
 
 Now we'll use the same scenario with the monthly customer::
 
