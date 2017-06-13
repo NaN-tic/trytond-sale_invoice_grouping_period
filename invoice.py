@@ -1,12 +1,7 @@
 # The COPYRIGHT file at the top level of this repository contains the full
 # copyright notices and license terms.
-from sql import Cast, Literal
-from sql.aggregate import Max
-from sql.functions import Substring, Position
-from sql.operators import Like
-from trytond.pool import Pool, PoolMeta
+from trytond.pool import PoolMeta
 from trytond.model import fields
-from .party import GROUPING_PERIODS
 
 __all__ = ['Invoice']
 
