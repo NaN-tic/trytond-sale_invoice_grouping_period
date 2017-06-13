@@ -208,47 +208,22 @@ Check the invoices::
     >>> config.user = account_user.id
     >>> invoices = Invoice.find([
     ...     ('party', '=', customer_daily.id),
-    ...     ('sale_date', '=', today),
+    ...     ('start_date', '=', today),
     ...     ('state', '=', 'draft'),
     ...     ])
     >>> len(invoices)
     1
     >>> invoice, = invoices
-    >>> invoice.sale_date == today
+    >>> invoice.start_date == today
     True
     >>> len(invoice.lines)
-    2
+    3
     >>> invoice.lines[0].quantity
     1.0
     >>> invoice.lines[1].quantity
     2.0
-
-Create a sale for the next day::
-
-    >>> config.user = sale_user.id
-    >>> sale = Sale()
-    >>> sale.party = customer_daily
-    >>> sale.sale_date = today + datetime.timedelta(days=1)
-    >>> sale.invoice_method = 'order'
-    >>> sale_line = sale.lines.new()
-    >>> sale_line.product = product
-    >>> sale_line.quantity = 4.0
-    >>> sale.click('quote')
-    >>> sale.click('confirm')
-    >>> sale.click('process')
-    >>> sale.state
-    u'processing'
-
-A new invoice is created::
-
-    >>> config.user = account_user.id
-    >>> invoices = Invoice.find([
-    ...     ('party', '=', customer_daily.id),
-    ...     ('sale_date', '>=', today),
-    ...     ('state', '=', 'draft'),
-    ...     ])
-    >>> len(invoices)
-    2
+    >>> invoice.lines[2].quantity
+    3.0
 
 Now we'll use the same scenario with the monthly customer::
 
@@ -306,7 +281,7 @@ Check the invoices::
     >>> len(invoices)
     1
     >>> invoice, = invoices
-    >>> invoice.sale_date == next_biweekly
+    >>> invoice.start_date == start_month
     True
     >>> len(invoice.lines)
     3
