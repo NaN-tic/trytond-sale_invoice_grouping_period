@@ -23,10 +23,8 @@ class Sale:
         date = None
         if self.invoice_method == 'shipment':
             for line in self.lines:
-                for iline in line.get_invoice_line():
-                    for move in iline.stock_moves:
-                        date = move.effective_date
-                        break
+                date = line.shipping_date
+                break
         if date is None:
             date = self.sale_date
         return date
