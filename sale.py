@@ -3,7 +3,6 @@
 import datetime
 from dateutil.relativedelta import relativedelta
 from trytond.pool import Pool, PoolMeta
-from trytond.transaction import Transaction
 
 __all__ = ['Sale']
 
@@ -84,19 +83,12 @@ class Sale:
 
         period = self.party.sale_invoice_grouping_period
         if self.invoice_grouping_method == 'standard' and period:
-            for code in [Transaction().language, 'en_US']:
-                langs = Lang.search([
-                        ('code', '=', code),
-                        ], limit=1)
-                if langs:
-                    break
-            lang, = langs
+            lang = Lang.get()
             date = self._get_grouped_invoice_date()
             start, end = self._get_invoice_dates(date,
                 self.party.sale_invoice_grouping_period)
             invoice.start_date = start
             invoice.end_date = end
-            start, end = [Lang.strftime(x, lang.code, lang.date) for x in
-                (start, end)]
+            start, end = [lang.strftime(x) for x in (start, end)]
             invoice.description = '%s - %s' % (start, end)
         return invoice

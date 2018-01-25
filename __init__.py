@@ -9,6 +9,7 @@ from . import invoice
 def register():
     Pool.register(
         party.Party,
+        party.PartySaleInvoiceGroupingMethod,
         sale.Sale,
         invoice.Invoice,
         module='sale_invoice_grouping_period', type_='model')
