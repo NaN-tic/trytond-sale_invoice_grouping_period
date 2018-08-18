@@ -22,9 +22,8 @@ GROUPING_PERIODS = [
     ]
 
 
-class Party:
+class Party(metaclass=PoolMeta):
     __name__ = 'party.party'
-    __metaclass__ = PoolMeta
 
     sale_invoice_grouping_period = fields.MultiValue(fields.Selection(
             GROUPING_PERIODS, 'Sale Invoice Grouping Period',
@@ -43,8 +42,7 @@ class Party:
         return super(Party, cls).multivalue_model(field)
 
 
-class PartySaleInvoiceGroupingMethod:
-    __metaclass__ = PoolMeta
+class PartySaleInvoiceGroupingMethod(metaclass=PoolMeta):
     __name__ = 'party.party.sale_invoice_grouping_method'
 
     sale_invoice_grouping_period = fields.Selection(

@@ -8,7 +8,7 @@ import io
 try:
     from configparser import ConfigParser
 except ImportError:
-    from ConfigParser import ConfigParser
+    from configparser import ConfigParser
 
 MODULE = 'sale_invoice_grouping_period'
 PREFIX = 'nantic'

@@ -126,7 +126,7 @@ Sale some products::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
 
 Make another sale::
 
@@ -135,7 +135,7 @@ Make another sale::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
 
 Check the invoices::
 
@@ -146,10 +146,10 @@ Check the invoices::
     2
     >>> invoice = invoices[0]
     >>> invoice.type
-    u'out'
+    'out'
     >>> invoice.click('post')
     >>> invoice.state
-    u'posted'
+    'posted'
 
 Now we'll use the same scenario with the daily customer::
 
@@ -165,7 +165,7 @@ Now we'll use the same scenario with the daily customer::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
 
 Make another sale::
 
@@ -180,7 +180,7 @@ Make another sale::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
 
 Make another sale::
 
@@ -195,7 +195,7 @@ Make another sale::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
 
 Check the invoices::
 
@@ -233,7 +233,7 @@ Now we'll use the same scenario with the monthly customer::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
 
 Make another sale::
 
@@ -248,7 +248,7 @@ Make another sale::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
 
 Make another sale::
 
@@ -263,7 +263,7 @@ Make another sale::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
 
 Check the invoices::
 
@@ -300,7 +300,7 @@ Create a sale for the next month::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
 
 A new invoice is created::
 
@@ -326,7 +326,7 @@ Now we'll use the same scenario with the biweekly customer::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
 
 Make another sale::
 
@@ -341,7 +341,7 @@ Make another sale::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
 
 Check the invoices::
 
@@ -374,7 +374,7 @@ Create a sale for the next biweekly::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
 
 A new invoice is created::
 

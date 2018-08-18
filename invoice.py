@@ -6,8 +6,7 @@ from trytond.model import fields
 __all__ = ['Invoice']
 
 
-class Invoice:
+class Invoice(metaclass=PoolMeta):
     __name__ = 'account.invoice'
-    __metaclass__ = PoolMeta
     start_date = fields.Date('Start Date', readonly=True)
     end_date = fields.Date('End Date', readonly=True)

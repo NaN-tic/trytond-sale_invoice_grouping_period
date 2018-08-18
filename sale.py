@@ -7,8 +7,7 @@ from trytond.pool import Pool, PoolMeta
 __all__ = ['Sale']
 
 
-class Sale:
-    __metaclass__ = PoolMeta
+class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
 
     def _get_grouped_invoice_order(self):
