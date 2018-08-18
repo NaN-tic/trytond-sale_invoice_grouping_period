@@ -5,10 +5,7 @@ from setuptools import setup
 import re
 import os
 import io
-try:
-    from configparser import ConfigParser
-except ImportError:
-    from configparser import ConfigParser
+from configparser import ConfigParser
 
 MODULE = 'sale_invoice_grouping_period'
 PREFIX = 'nantic'
