@@ -14,6 +14,11 @@ msgctxt "field:party.party,sale_invoice_grouping_period:"
 msgid "Sale Invoice Grouping Period"
 msgstr "Període d'agrupació de factures en vendes"
 
+msgctxt ""
+"field:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Sale Invoice Grouping Period"
+msgstr "Període d'agrupació de factures en vendes"
+
 msgctxt "selection:party.party,sale_invoice_grouping_period:"
 msgid "Biweekly"
 msgstr "Quinzenal"
@@ -59,6 +64,66 @@ msgid "Weekly - Tuesday"
 msgstr "Setmanal - Dimarts"
 
 msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Wednesday"
+msgstr "Setmanal - Dimecres"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Biweekly"
+msgstr "Quinzenal"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Daily"
+msgstr "Diariament"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Every Ten Days"
+msgstr "Cada deu dies"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Monthly"
+msgstr "Mensualment"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Standard"
+msgstr "Estàndard"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Friday"
+msgstr "Setmanal - Divendres"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Monday"
+msgstr "Setmanal - Dilluns"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Saturday"
+msgstr "Setmanal - Dissabte"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Sunday"
+msgstr "Setmanal - Diumenge"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Thursday"
+msgstr "Setmanal - Dijous"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Tuesday"
+msgstr "Setmanal - Dimarts"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
 msgid "Weekly - Wednesday"
 msgstr "Setmanal - Dimecres"
 
