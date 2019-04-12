@@ -124,7 +124,6 @@ Sale some products::
     >>> sale_line.quantity = 2.0
     >>> sale.click('quote')
     >>> sale.click('confirm')
-    >>> sale.click('process')
     >>> sale.state
     'processing'
 
@@ -133,7 +132,6 @@ Make another sale::
     >>> sale, = Sale.duplicate([sale])
     >>> sale.click('quote')
     >>> sale.click('confirm')
-    >>> sale.click('process')
     >>> sale.state
     'processing'
 
@@ -163,7 +161,6 @@ Now we'll use the same scenario with the daily customer::
     >>> sale_line.quantity = 1.0
     >>> sale.click('quote')
     >>> sale.click('confirm')
-    >>> sale.click('process')
     >>> sale.state
     'processing'
 
@@ -178,7 +175,6 @@ Make another sale::
     >>> sale_line.quantity = 2.0
     >>> sale.click('quote')
     >>> sale.click('confirm')
-    >>> sale.click('process')
     >>> sale.state
     'processing'
 
@@ -193,7 +189,6 @@ Make another sale::
     >>> sale_line.quantity = 3.0
     >>> sale.click('quote')
     >>> sale.click('confirm')
-    >>> sale.click('process')
     >>> sale.state
     'processing'
 
@@ -231,7 +226,6 @@ Now we'll use the same scenario with the monthly customer::
     >>> sale_line.quantity = 1.0
     >>> sale.click('quote')
     >>> sale.click('confirm')
-    >>> sale.click('process')
     >>> sale.state
     'processing'
 
@@ -246,7 +240,6 @@ Make another sale::
     >>> sale_line.quantity = 2.0
     >>> sale.click('quote')
     >>> sale.click('confirm')
-    >>> sale.click('process')
     >>> sale.state
     'processing'
 
@@ -261,7 +254,6 @@ Make another sale::
     >>> sale_line.quantity = 3.0
     >>> sale.click('quote')
     >>> sale.click('confirm')
-    >>> sale.click('process')
     >>> sale.state
     'processing'
 
@@ -298,7 +290,6 @@ Create a sale for the next month::
     >>> sale_line.quantity = 4.0
     >>> sale.click('quote')
     >>> sale.click('confirm')
-    >>> sale.click('process')
     >>> sale.state
     'processing'
 
@@ -324,7 +315,6 @@ Now we'll use the same scenario with the biweekly customer::
     >>> sale_line.quantity = 1.0
     >>> sale.click('quote')
     >>> sale.click('confirm')
-    >>> sale.click('process')
     >>> sale.state
     'processing'
 
@@ -339,7 +329,6 @@ Make another sale::
     >>> sale_line.quantity = 2.0
     >>> sale.click('quote')
     >>> sale.click('confirm')
-    >>> sale.click('process')
     >>> sale.state
     'processing'
 
@@ -372,7 +361,6 @@ Create a sale for the next biweekly::
     >>> sale_line.quantity = 4.0
     >>> sale.click('quote')
     >>> sale.click('confirm')
-    >>> sale.click('process')
     >>> sale.state
     'processing'
 
