@@ -88,6 +88,4 @@ class Sale(metaclass=PoolMeta):
                 self.party.sale_invoice_grouping_period)
             invoice.start_date = start
             invoice.end_date = end
-            start, end = [lang.strftime(x) for x in (start, end)]
-            invoice.description = '%s - %s' % (start, end)
         return invoice
