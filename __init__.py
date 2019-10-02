@@ -11,5 +11,6 @@ def register():
         party.Party,
         party.PartySaleInvoiceGroupingMethod,
         sale.Sale,
+        sale.SaleLine,
         invoice.Invoice,
         module='sale_invoice_grouping_period', type_='model')
