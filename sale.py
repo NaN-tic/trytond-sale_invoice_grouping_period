@@ -2,9 +2,11 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 from dateutil.relativedelta import relativedelta
-from trytond.pool import Pool, PoolMeta
+from trytond.model import fields
+from trytond.pool import PoolMeta
+from trytond.pyson import Eval
 
-__all__ = ['Sale']
+__all__ = ['Sale', 'SaleLine']
 
 
 class Sale(metaclass=PoolMeta):
@@ -21,8 +23,12 @@ class Sale(metaclass=PoolMeta):
         date = None
         if self.invoice_method == 'shipment':
             for line in self.lines:
-                date = line.shipping_date
-                break
+                if line.type != 'line':
+                    continue
+                quantity = (line._get_invoice_line_quantity() - line._get_invoiced_quantity())
+                if quantity:
+                    date = line.invoice_date
+                    break
         if date is None:
             date = self.sale_date
         return date
@@ -76,16 +82,33 @@ class Sale(metaclass=PoolMeta):
         return start, start + interval
 
     def _get_invoice_sale(self):
-        Lang = Pool().get('ir.lang')
-
         invoice = super(Sale, self)._get_invoice_sale()
 
         period = self.party.sale_invoice_grouping_period
         if self.invoice_grouping_method == 'standard' and period:
-            lang = Lang.get()
             date = self._get_grouped_invoice_date()
             start, end = self._get_invoice_dates(date,
                 self.party.sale_invoice_grouping_period)
             invoice.start_date = start
             invoice.end_date = end
         return invoice
+
+
+class SaleLine(metaclass=PoolMeta):
+    __name__ = 'sale.line'
+    invoice_date = fields.Function(fields.Date('Invoice Date',
+            states={
+                'invisible': Eval('type') != 'line',
+                },
+            depends=['type']),
+        'get_invoice_date')
+
+    @classmethod
+    def get_invoice_date(cls, lines, name):
+        res = dict((l.id, None) for l in lines)
+        for line in lines:
+            dates = filter(
+                None, (m.effective_date or m.planned_date for m in line.moves
+                    if m.state != 'cancel' and not m.invoice_lines and m.quantity > 0))
+            res[line.id] = min(dates, default=None)
+        return res

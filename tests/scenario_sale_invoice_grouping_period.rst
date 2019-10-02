@@ -20,6 +20,8 @@ Imports::
     >>> same_biweekly = today + relativedelta(day=10)
     >>> next_biweekly = today + relativedelta(day=20)
     >>> next_month = today + relativedelta(months=1)
+    >>> next_week = today + relativedelta(day=7)
+    >>> next_week2 = today + relativedelta(day=14)
 
 Install sale_invoice_grouping::
 
@@ -41,6 +43,16 @@ Create sale user::
     >>> sale_group, = Group.find([('name', '=', 'Sales')])
     >>> sale_user.groups.append(sale_group)
     >>> sale_user.save()
+
+Create stock user::
+
+    >>> stock_user = User()
+    >>> stock_user.name = 'Stock'
+    >>> stock_user.login = 'stock'
+    >>> stock_user.main_company = company
+    >>> stock_group, = Group.find([('name', '=', 'Stock')])
+    >>> stock_user.groups.append(stock_group)
+    >>> stock_user.save()
 
 Create account user::
 
@@ -74,6 +86,10 @@ Create parties::
     >>> customer_daily.sale_invoice_grouping_method = 'standard'
     >>> customer_daily.sale_invoice_grouping_period = 'daily'
     >>> customer_daily.save()
+    >>> customer_weekly = Party(name='Customer BiWeekly')
+    >>> customer_weekly.sale_invoice_grouping_method = 'standard'
+    >>> customer_weekly.sale_invoice_grouping_period = 'weekly-0'
+    >>> customer_weekly.save()
     >>> customer_biweekly = Party(name='Customer BiWeekly')
     >>> customer_biweekly.sale_invoice_grouping_method = 'standard'
     >>> customer_biweekly.sale_invoice_grouping_period = 'biweekly'
@@ -97,8 +113,7 @@ Create product::
     >>> ProductUom = Model.get('product.uom')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
     >>> ProductTemplate = Model.get('product.template')
-    >>> Product = Model.get('product.product')
-    >>> product = Product()
+
     >>> template = ProductTemplate()
     >>> template.name = 'product'
     >>> template.default_uom = unit
@@ -106,11 +121,39 @@ Create product::
     >>> template.purchasable = True
     >>> template.salable = True
     >>> template.list_price = Decimal('10')
-    >>> template.cost_price_method = 'fixed'
     >>> template.account_category = account_category
     >>> template.save()
-    >>> product.template = template
-    >>> product.save()
+    >>> product, = template.products
+
+    >>> template = ProductTemplate()
+    >>> template.name = 'product2'
+    >>> template.default_uom = unit
+    >>> template.type = 'goods'
+    >>> template.purchasable = True
+    >>> template.salable = True
+    >>> template.list_price = Decimal('10')
+    >>> template.account_category = account_category
+    >>> template.save()
+    >>> product2, = template.products
+
+Create an Inventory::
+
+    >>> Inventory = Model.get('stock.inventory')
+    >>> Location = Model.get('stock.location')
+    >>> storage, = Location.find([
+    ...         ('code', '=', 'STO'),
+    ...         ])
+    >>> inventory = Inventory()
+    >>> inventory.location = storage
+    >>> inventory_line = inventory.lines.new(product=product)
+    >>> inventory_line.quantity = 100.0
+    >>> inventory_line.expected_quantity = 0.0
+    >>> inventory_line2 = inventory.lines.new(product=product2)
+    >>> inventory_line2.quantity = 100.0
+    >>> inventory_line2.expected_quantity = 0.0
+    >>> inventory.click('confirm')
+    >>> inventory.state
+    'done'
 
 Sale some products::
 
@@ -229,8 +272,53 @@ Now we'll use the same scenario with the monthly customer::
     >>> sale.state
     'processing'
 
+Make another sale (weekly)::
+
+    >>> sale = Sale()
+    >>> sale.party = customer_weekly
+    >>> sale.invoice_method = 'shipment'
+    >>> sale_line = sale.lines.new()
+    >>> sale_line.product = product
+    >>> sale_line.quantity = 2.0
+    >>> sale_line = sale.lines.new()
+    >>> sale_line.product = product2
+    >>> sale_line.quantity = 2.0
+    >>> sale.click('quote')
+    >>> sale.click('confirm')
+    >>> sale.state
+    'processing'
+    >>> shipment, = sale.shipments
+    >>> config.user = stock_user.id
+    >>> move1, move2 = shipment.inventory_moves
+    >>> move1.quantity = Decimal(0)
+    >>> move1.save()
+    >>> shipment.effective_date = next_week
+    >>> shipment.save()
+    >>> shipment.click('assign_try')
+    True
+    >>> shipment.click('pack')
+    >>> shipment.click('done')
+    >>> config.user = sale_user.id
+    >>> sale.reload()
+    >>> shipment, _ = sale.shipments
+    >>> config.user = stock_user.id
+    >>> shipment.effective_date = next_week2
+    >>> shipment.save()
+    >>> shipment.click('assign_try')
+    True
+    >>> shipment.click('pack')
+    >>> shipment.click('done')
+    >>> config.user = sale_user.id
+    >>> sale.reload()
+    >>> len(sale.invoices) == 2
+    True
+    >>> invoice1, invoice2 = sale.invoices
+    >>> invoice1.start_date != invoice2.start_date
+    True
+
 Make another sale::
 
+    >>> config.user = sale_user.id
     >>> sale = Sale()
     >>> sale.party = customer_monthly
     >>> sale.sale_date = same_biweekly
