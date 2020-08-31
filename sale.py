@@ -109,6 +109,6 @@ class SaleLine(metaclass=PoolMeta):
         for line in lines:
             dates = filter(
                 None, (m.effective_date or m.planned_date for m in line.moves
-                    if m.state != 'cancel' and not m.invoice_lines and m.quantity > 0))
+                    if m.state != 'cancelled' and not m.invoice_lines and m.quantity > 0))
             res[line.id] = min(dates, default=None)
         return res
