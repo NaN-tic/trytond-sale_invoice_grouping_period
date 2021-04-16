@@ -291,8 +291,11 @@ Make another sale (weekly)::
     >>> shipment.save()
     >>> shipment.click('assign_try')
     True
+    >>> shipment.click('pick')
     >>> shipment.click('pack')
     >>> shipment.click('done')
+    >>> shipment.state
+    'done'
     >>> config.user = sale_user.id
     >>> sale.reload()
     >>> shipment, _ = sale.shipments
@@ -301,8 +304,11 @@ Make another sale (weekly)::
     >>> shipment.save()
     >>> shipment.click('assign_try')
     True
+    >>> shipment.click('pick')
     >>> shipment.click('pack')
     >>> shipment.click('done')
+    >>> shipment.state
+    'done'
     >>> config.user = sale_user.id
     >>> sale.reload()
     >>> len(sale.invoices) == 2
