@@ -25,8 +25,10 @@ class Sale(metaclass=PoolMeta):
             for line in self.lines:
                 if line.type != 'line':
                     continue
-                quantity = (line._get_invoice_line_quantity() - line._get_invoiced_quantity())
-                if quantity:
+                invoice_line_quantity = line._get_invoice_line_quantity()
+                invoiced_quantity = line._get_invoiced_quantity()
+                if (invoice_line_quantity and invoiced_quantity
+                        and (invoice_line_quantity - invoiced_quantity)):
                     date = line.invoice_date
                     break
         if date is None:
