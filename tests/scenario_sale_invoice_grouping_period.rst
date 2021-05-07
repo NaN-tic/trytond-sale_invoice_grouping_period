@@ -21,8 +21,8 @@ Imports::
     >>> same_biweekly = today + relativedelta(day=10)
     >>> next_biweekly = today + relativedelta(day=20)
     >>> next_month = today + relativedelta(months=1)
-    >>> next_week = today + relativedelta(day=7)
-    >>> next_week2 = today + relativedelta(day=14)
+    >>> next_week = today + datetime.timedelta(days=7)
+    >>> next_week2 = today + datetime.timedelta(days=14)
 
 Install sale_invoice_grouping::
 
