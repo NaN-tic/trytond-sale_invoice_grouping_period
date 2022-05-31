@@ -5,7 +5,7 @@ Sale Invoice Grouping Period Scenario
 Imports::
 
     >>> import datetime
-    >>> from dateutil.relativedelta import relativedelta
+    >>> from dateutil.relativedelta import relativedelta, MO, TU, TH, WE, FR, SA, SU
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
@@ -96,6 +96,10 @@ Create parties::
     >>> customer_monthly.sale_invoice_grouping_method = 'standard'
     >>> customer_monthly.sale_invoice_grouping_period = 'monthly'
     >>> customer_monthly.save()
+    >>> customer_weekly_break = Party(name='Customer Weekly 0 break')
+    >>> customer_weekly_break.sale_invoice_grouping_method = 'standard'
+    >>> customer_weekly_break.sale_invoice_grouping_period = 'weekly-0-break'
+    >>> customer_weekly_break.save()
 
 Create account category::
 
@@ -509,3 +513,48 @@ A new invoice is created::
     ...     ])
     >>> len(invoices)
     2
+
+Create a sale for the next weekly break::
+
+    >>> config.user = sale_user.id
+    >>> sale = Sale()
+    >>> sale.party = customer_weekly_break
+    >>> sale.sale_date = today
+    >>> sale.invoice_method = 'order'
+    >>> sale_line = sale.lines.new()
+    >>> sale_line.product = product
+    >>> sale_line.quantity = 4.0
+    >>> sale.click('quote')
+    >>> sale.click('confirm')
+    >>> sale.state
+    'processing'
+
+Check the invoices::
+
+    >>> config.user = account_user.id
+    >>> invoices = Invoice.find([
+    ...     ('party', '=', customer_weekly_break.id),
+    ...     ('state', '=', 'draft'),
+    ...     ])
+    >>> len(invoices)
+    1
+
+    >>> invoice, = invoices
+    >>> invoice.start_date.weekday() == 0
+    True
+    >>> invoice.end_date.weekday() == 0
+    True
+
+    >>> last_day = today + relativedelta(day=31, weekday=MO(-1))
+    >>> if last_day < today:
+    ...     start = today + relativedelta(day=31, months=1, weekday=MO(-1))
+    ...     interval = relativedelta(day=31, months=1, weekday=MO(-1))
+    ... else:
+    ...     start = last_day
+    ...     interval = relativedelta(day=31, months=1, weekday=MO(-1))
+    >>> invoice.start_date == start
+    True
+    >>> invoice.end_date == start + interval
+    True
+    >>> len(invoice.lines)
+    1

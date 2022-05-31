@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
-from dateutil.relativedelta import relativedelta
+from dateutil.relativedelta import relativedelta, MO, TU, TH, WE, FR, SA, SU
 from trytond.model import fields
 from trytond.pool import PoolMeta
 from trytond.pyson import Eval
@@ -72,11 +72,38 @@ class Sale(metaclass=PoolMeta):
                 interval = relativedelta(months=1, day=1, days=-1)
             start = datetime.date(date.year, date.month, start_day)
         elif period.startswith('weekly'):
-            diff = date.weekday() - int(period[-1])
+            if period.endswith('break'):
+                diff = date.weekday() - int(period[-7])
+            else:
+                diff = date.weekday() - int(period[-1])
             if diff < 0:
                 diff = 7 + diff
             start = date - relativedelta(days=diff)
             interval = relativedelta(days=6)
+            if period.endswith('break'):
+                if start.month != (start + interval).month:
+                    weekday_num = period[:-6][-1:]
+                    if weekday_num == '0':
+                        weekday = MO(-1)
+                    elif weekday_num == '1':
+                        weekday = TU(-1)
+                    elif weekday_num == '2':
+                        weekday = TH(-1)
+                    elif weekday_num == '3':
+                        weekday = WE(-1)
+                    elif weekday_num == '4':
+                        weekday = FR(-1)
+                    elif weekday_num == '5':
+                        weekday = SA(-1)
+                    elif weekday_num == '6':
+                        weekday = SU(-1)
+                    last_day = start + relativedelta(day=31, weekday=weekday)
+                    if last_day < datetime.date.today():
+                        start = start + relativedelta(day=31, months=1, weekday=weekday)
+                        interval = relativedelta(day=31, months=1, weekday=weekday)
+                    else:
+                        start = last_day
+                        interval = relativedelta(day=31, months=1, weekday=weekday)
         elif period == 'daily':
             start = datetime.date.today()
             interval = relativedelta(day=0)
