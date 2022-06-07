@@ -81,29 +81,33 @@ class Sale(metaclass=PoolMeta):
             start = date - relativedelta(days=diff)
             interval = relativedelta(days=6)
             if period.endswith('break'):
-                if start.month != (start + interval).month:
-                    weekday_num = period[:-6][-1:]
-                    if weekday_num == '0':
-                        weekday = MO(-1)
-                    elif weekday_num == '1':
-                        weekday = TU(-1)
-                    elif weekday_num == '2':
-                        weekday = TH(-1)
-                    elif weekday_num == '3':
-                        weekday = WE(-1)
-                    elif weekday_num == '4':
-                        weekday = FR(-1)
-                    elif weekday_num == '5':
-                        weekday = SA(-1)
-                    elif weekday_num == '6':
-                        weekday = SU(-1)
-                    last_day = start + relativedelta(day=31, weekday=weekday)
-                    if last_day < datetime.date.today():
-                        start = start + relativedelta(day=31, months=1, weekday=weekday)
-                        interval = relativedelta(day=31, months=1, weekday=weekday)
-                    else:
-                        start = last_day
-                        interval = relativedelta(day=31, months=1, weekday=weekday)
+                weekday_num = period[:-6][-1:]
+
+                if weekday_num == '0':
+                    weekday = MO(0)
+                elif weekday_num == '1':
+                    weekday = TU(0)
+                elif weekday_num == '2':
+                    weekday = TH(0)
+                elif weekday_num == '3':
+                    weekday = WE(0)
+                elif weekday_num == '4':
+                    weekday = FR(0)
+                elif weekday_num == '5':
+                    weekday = SA(0)
+                elif weekday_num == '6':
+                    weekday = SU(0)
+
+                # invoice first week of the month
+                if date.month != start.month:
+                    start = datetime.date(date.year, date.month, 1)
+                    last_day = date + relativedelta(weekday=weekday) - datetime.timedelta(days=1)
+                    interval = last_day - start
+                # invoice last week of the month
+                elif start.month != (start + interval).month:
+                    last_day = start + relativedelta(day=31)
+                    interval = last_day - start
+                # else same as weekly
         elif period == 'daily':
             start = datetime.date.today()
             interval = relativedelta(day=0)
