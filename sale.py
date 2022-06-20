@@ -81,27 +81,10 @@ class Sale(metaclass=PoolMeta):
             start = date - relativedelta(days=diff)
             interval = relativedelta(days=6)
             if period.endswith('break'):
-                weekday_num = period[:-6][-1:]
-
-                if weekday_num == '0':
-                    weekday = MO(0)
-                elif weekday_num == '1':
-                    weekday = TU(0)
-                elif weekday_num == '2':
-                    weekday = TH(0)
-                elif weekday_num == '3':
-                    weekday = WE(0)
-                elif weekday_num == '4':
-                    weekday = FR(0)
-                elif weekday_num == '5':
-                    weekday = SA(0)
-                elif weekday_num == '6':
-                    weekday = SU(0)
-
                 # invoice first week of the month
                 if date.month != start.month:
+                    last_day = start + interval
                     start = datetime.date(date.year, date.month, 1)
-                    last_day = date + relativedelta(weekday=weekday) - datetime.timedelta(days=1)
                     interval = last_day - start
                 # invoice last week of the month
                 elif start.month != (start + interval).month:
