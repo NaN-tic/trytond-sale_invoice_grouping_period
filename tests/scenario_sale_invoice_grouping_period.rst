@@ -5,7 +5,7 @@ Sale Invoice Grouping Period Scenario
 Imports::
 
     >>> import datetime
-    >>> from dateutil.relativedelta import relativedelta, MO, TU, TH, WE, FR, SA, SU
+    >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
