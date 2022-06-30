@@ -19,6 +19,10 @@ msgctxt ""
 msgid "Sale Invoice Grouping Period"
 msgstr "Período de agrupación de facturas de ventas"
 
+msgctxt "field:sale.line,invoice_date:"
+msgid "Invoice Date"
+msgstr "Fecha factura"
+
 msgctxt "selection:party.party,sale_invoice_grouping_period:"
 msgid "Biweekly"
 msgstr "Quinzenal"
@@ -44,28 +48,56 @@ msgid "Weekly - Friday"
 msgstr "Semanal - Viernes"
 
 msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Friday - monthly close"
+msgstr "Semanal viernes y final de mes"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
 msgid "Weekly - Monday"
 msgstr "Semanal - Lunes"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Monday - monthly close"
+msgstr "Semanal lunes y final de mes"
 
 msgctxt "selection:party.party,sale_invoice_grouping_period:"
 msgid "Weekly - Saturday"
 msgstr "Semanal - Sábado"
 
 msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Saturday - monthly close"
+msgstr "Semanal sábado y final de mes"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
 msgid "Weekly - Sunday"
 msgstr "Semanal - Domingo"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Sunday - monthly close"
+msgstr "Semanal domingo y final de mes"
 
 msgctxt "selection:party.party,sale_invoice_grouping_period:"
 msgid "Weekly - Thursday"
 msgstr "Semanal - Jueves"
 
 msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Thursday - monthly close"
+msgstr "Semanal jueves y final de mes"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
 msgid "Weekly - Tuesday"
 msgstr "Semanal - Martes"
 
 msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Tuesday - monthly close"
+msgstr "Semanal martes y final de mes"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
 msgid "Weekly - Wednesday"
 msgstr "Semanal - Miércoles"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Wednesday - monthly close"
+msgstr "Semanal miércoles y final de mes"
 
 msgctxt ""
 "selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
@@ -99,8 +131,18 @@ msgstr "Semanal - Viernes"
 
 msgctxt ""
 "selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Friday - monthly close"
+msgstr "Semanal viernes y final de mes"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
 msgid "Weekly - Monday"
 msgstr "Semanal - Lunes"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Monday - monthly close"
+msgstr "Semanal lunes y final de mes"
 
 msgctxt ""
 "selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
@@ -109,8 +151,18 @@ msgstr "Semanal - Sábado"
 
 msgctxt ""
 "selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Saturday - monthly close"
+msgstr "Semanal sábado y final de mes"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
 msgid "Weekly - Sunday"
 msgstr "Semanal - Domingo"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Sunday - monthly close"
+msgstr "Semanal domingo y final de mes"
 
 msgctxt ""
 "selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
@@ -119,13 +171,28 @@ msgstr "Semanal - Jueves"
 
 msgctxt ""
 "selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Thursday - monthly close"
+msgstr "Semanal jueves y final de mes"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
 msgid "Weekly - Tuesday"
 msgstr "Semanal - Martes"
 
 msgctxt ""
 "selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Tuesday - monthly close"
+msgstr "Semanal martes y final de mes"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
 msgid "Weekly - Wednesday"
 msgstr "Semanal - Miércoles"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Wednesday - monthly close"
+msgstr "Semanal miércoles y final de mes"
 
 msgctxt "view:account.invoice:"
 msgid "Grouping Period"

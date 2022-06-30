@@ -96,6 +96,10 @@ Create parties::
     >>> customer_monthly.sale_invoice_grouping_method = 'standard'
     >>> customer_monthly.sale_invoice_grouping_period = 'monthly'
     >>> customer_monthly.save()
+    >>> customer_weekly_break = Party(name='Customer Weekly 0 break')
+    >>> customer_weekly_break.sale_invoice_grouping_method = 'standard'
+    >>> customer_weekly_break.sale_invoice_grouping_period = 'weekly-0-break'
+    >>> customer_weekly_break.save()
 
 Create account category::
 
@@ -509,3 +513,57 @@ A new invoice is created::
     ...     ])
     >>> len(invoices)
     2
+
+Create a sale for the next weekly break::
+
+    >>> config.user = sale_user.id
+    >>> sale = Sale()
+    >>> sale.party = customer_weekly_break
+    >>> sale.sale_date = datetime.date(2022, 6, 30)
+    >>> sale.invoice_method = 'order'
+    >>> sale_line = sale.lines.new()
+    >>> sale_line.product = product
+    >>> sale_line.quantity = 4.0
+    >>> sale.click('quote')
+    >>> sale.click('confirm')
+    >>> sale.state
+    'processing'
+    >>> invoices = sale.invoices
+
+    >>> sale2 = Sale()
+    >>> sale2.party = customer_weekly_break
+    >>> sale2.sale_date = datetime.date(2022, 7, 2)
+    >>> sale2.invoice_method = 'order'
+    >>> sale_line = sale2.lines.new()
+    >>> sale_line.product = product
+    >>> sale_line.quantity = 4.0
+    >>> sale2.click('quote')
+    >>> sale2.click('confirm')
+    >>> sale2.state
+    'processing'
+    >>> invoices2 = sale2.invoices
+
+    >>> sale3 = Sale()
+    >>> sale3.party = customer_weekly_break
+    >>> sale3.sale_date = datetime.date(2022, 7, 5)
+    >>> sale3.invoice_method = 'order'
+    >>> sale_line = sale3.lines.new()
+    >>> sale_line.product = product
+    >>> sale_line.quantity = 4.0
+    >>> sale3.click('quote')
+    >>> sale3.click('confirm')
+    >>> sale3.state
+    'processing'
+    >>> invoices3 = sale3.invoices
+
+Check the invoices::
+
+    >>> config.user = account_user.id
+    >>> invoices[0].start_date, invoices[0].end_date
+    (datetime.date(2022, 6, 27), datetime.date(2022, 6, 30))
+
+    >>> invoices2[0].start_date, invoices2[0].end_date
+    (datetime.date(2022, 7, 1), datetime.date(2022, 7, 3))
+
+    >>> invoices3[0].start_date, invoices3[0].end_date
+    (datetime.date(2022, 7, 4), datetime.date(2022, 7, 10))
