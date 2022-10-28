@@ -16,6 +16,13 @@ Imports::
     >>> from trytond.modules.account_invoice.tests.tools import \
     ...     set_fiscalyear_invoice_sequences
     >>> from trytond.modules.stock.exceptions import MoveFutureWarning
+
+Install sale_invoice_grouping::
+
+    >>> config = activate_modules('sale_invoice_grouping_period')
+
+Compute dates after module activation::
+
     >>> today = datetime.date.today()
     >>> start_month = today + relativedelta(day=1)
     >>> same_biweekly = today + relativedelta(day=10)
@@ -23,10 +30,6 @@ Imports::
     >>> next_month = today + relativedelta(months=1)
     >>> next_week = today + datetime.timedelta(days=7)
     >>> next_week2 = today + datetime.timedelta(days=14)
-
-Install sale_invoice_grouping::
-
-    >>> config = activate_modules('sale_invoice_grouping_period')
 
 Create company::
 
