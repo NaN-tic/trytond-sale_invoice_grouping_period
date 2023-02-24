@@ -298,8 +298,6 @@ Make another sale (weekly)::
     >>> shipment.effective_date = next_week
     >>> shipment.save()
     >>> shipment.click('assign_try')
-    True
-
     >>> try:
     ...   shipment.click('pick')
     ... except MoveFutureWarning as warning:
@@ -334,8 +332,6 @@ Make another sale (weekly)::
     >>> shipment.effective_date = next_week2
     >>> shipment.save()
     >>> shipment.click('assign_try')
-    True
-
     >>> try:
     ...   shipment.click('pick')
     ... except MoveFutureWarning as warning:
