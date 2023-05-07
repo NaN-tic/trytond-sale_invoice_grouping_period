@@ -54,10 +54,3 @@ class PartySaleInvoiceGroupingMethod(metaclass=PoolMeta):
 
     sale_invoice_grouping_period = fields.Selection(
         GROUPING_PERIODS, "Sale Invoice Grouping Period")
-
-    @classmethod
-    def _migrate_property(cls, field_names, value_names, fields):
-        field_names.append('sale_invoice_grouping_period')
-        value_names.append('sale_invoice_grouping_period')
-        super(PartySaleInvoiceGroupingMethod, cls)._migrate_property(
-            field_names, value_names, fields)
