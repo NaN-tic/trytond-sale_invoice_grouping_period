@@ -277,6 +277,7 @@ Now we'll use the same scenario with the monthly customer::
 
 Make another sale (weekly)::
 
+    >>> Warning = Model.get('res.user.warning')
     >>> sale = Sale()
     >>> sale.party = customer_weekly
     >>> sale.invoice_method = 'shipment'
@@ -307,7 +308,7 @@ Make another sale (weekly)::
       ...
     MoveFutureWarning: ...
     >>> Warning = Model.get('res.user.warning')
-    >>> Warning(user=config.user, name=key).save()
+    >>> Warning.skip(key, True, config.context)
     >>> shipment.click('pick')
 
     >>> shipment.click('pack')
@@ -320,7 +321,7 @@ Make another sale (weekly)::
     Traceback (most recent call last):
       ...
     MoveFutureWarning: ...
-    >>> Warning(user=config.user, name=key).save()
+    >>> Warning.skip(key, True, config.context)
     >>> shipment.click('done')
 
     >>> shipment.state
@@ -340,8 +341,7 @@ Make another sale (weekly)::
     Traceback (most recent call last):
        ...
     MoveFutureWarning: ...
-    >>> Warning = Model.get('res.user.warning')
-    >>> Warning(user=config.user, name=key).save()
+    >>> Warning.skip(key, True, config.context)
     >>> shipment.click('pick')
 
     >>> shipment.click('pack')
@@ -354,7 +354,7 @@ Make another sale (weekly)::
     Traceback (most recent call last):
        ...
     MoveFutureWarning: ...
-    >>> Warning(user=config.user, name=key).save()
+    >>> Warning.skip(key, True, config.context)
     >>> shipment.click('done')
 
     >>> shipment.state
