@@ -115,9 +115,7 @@ class SaleLine(metaclass=PoolMeta):
     invoice_date = fields.Function(fields.Date('Invoice Date',
             states={
                 'invisible': Eval('type') != 'line',
-                },
-            depends=['type']),
-        'get_invoice_date')
+                }), 'get_invoice_date')
 
     @classmethod
     def get_invoice_date(cls, lines, name):

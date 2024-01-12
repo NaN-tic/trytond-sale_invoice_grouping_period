@@ -36,8 +36,7 @@ class Party(metaclass=PoolMeta):
             GROUPING_PERIODS, 'Sale Invoice Grouping Period',
             states={
                 'invisible': ~Bool(Eval('sale_invoice_grouping_method')),
-                },
-            depends=['sale_invoice_grouping_method'], sort=False))
+                }, sort=False))
 
     @classmethod
     def multivalue_model(cls, field):
