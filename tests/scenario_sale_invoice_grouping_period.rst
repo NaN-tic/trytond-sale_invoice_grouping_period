@@ -314,7 +314,7 @@ Make another sale (weekly)::
     >>> shipment.click('pack')
 
     >>> try:
-    ...   shipment.click('done')
+    ...   shipment.click('do')
     ... except MoveFutureWarning as warning:
     ...   _, (key, *_) = warning.args
     ...   raise  # doctest: +IGNORE_EXCEPTION_DETAIL
@@ -322,7 +322,7 @@ Make another sale (weekly)::
       ...
     MoveFutureWarning: ...
     >>> Warning.skip(key, True, config.context)
-    >>> shipment.click('done')
+    >>> shipment.click('do')
 
     >>> shipment.state
     'done'
@@ -347,7 +347,7 @@ Make another sale (weekly)::
     >>> shipment.click('pack')
 
     >>> try:
-    ...   shipment.click('done')
+    ...   shipment.click('do')
     ... except MoveFutureWarning as warning:
     ...   _, (key, *_) = warning.args
     ...   raise  # doctest: +IGNORE_EXCEPTION_DETAIL
@@ -355,7 +355,7 @@ Make another sale (weekly)::
        ...
     MoveFutureWarning: ...
     >>> Warning.skip(key, True, config.context)
-    >>> shipment.click('done')
+    >>> shipment.click('do')
 
     >>> shipment.state
     'done'
