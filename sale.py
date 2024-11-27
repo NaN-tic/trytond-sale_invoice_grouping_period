@@ -13,7 +13,7 @@ class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
 
     def _get_grouped_invoice_order(self):
-        res = super(Sale, self)._get_grouped_invoice_order()
+        res = super()._get_grouped_invoice_order()
 
         if self.invoice_grouping_method == 'period':
             return [('invoice_date', 'DESC')]
@@ -34,7 +34,7 @@ class Sale(metaclass=PoolMeta):
         return date
 
     def _get_grouped_invoice_domain(self, invoice):
-        invoice_domain = super(Sale, self)._get_grouped_invoice_domain(invoice)
+        invoice_domain = super()._get_grouped_invoice_domain(invoice)
         period = self.party.sale_invoice_grouping_period
         # invoice_grouping_method is standard, shipment_address... find invoices
         if self.invoice_grouping_method != None and period:
@@ -97,7 +97,7 @@ class Sale(metaclass=PoolMeta):
         return start, start + interval
 
     def _get_invoice_sale(self):
-        invoice = super(Sale, self)._get_invoice_sale()
+        invoice = super()._get_invoice_sale()
 
         period = self.party.sale_invoice_grouping_period
         # invoice_grouping_method is standard, shipment_address... find invoices

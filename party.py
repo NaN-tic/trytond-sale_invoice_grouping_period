@@ -45,7 +45,7 @@ class Party(metaclass=PoolMeta):
             'party.party.sale_invoice_grouping_method')
         if field == 'sale_invoice_grouping_period':
             return PartySaleInvoiceGroupingMethod
-        return super(Party, cls).multivalue_model(field)
+        return super().multivalue_model(field)
 
 
 class PartySaleInvoiceGroupingMethod(metaclass=PoolMeta):
