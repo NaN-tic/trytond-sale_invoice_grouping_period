@@ -2,11 +2,11 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 from dateutil.relativedelta import relativedelta
-from trytond.model import fields
-from trytond.pool import PoolMeta
+from trytond.model import fields, ModelSQL, ModelView, ValueMixin
+from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval
 
-__all__ = ['Sale', 'SaleLine']
+__all__ = ['Sale', 'SaleLine', 'SaleConfigurationFillGroupingInvoiceDate']
 
 
 class Sale(metaclass=PoolMeta):
@@ -47,8 +47,7 @@ class Sale(metaclass=PoolMeta):
                 ]
         return invoice_domain
 
-    @staticmethod
-    def _get_invoice_dates(date, period):
+    def _get_invoice_dates(self, date, period):
         if period == 'monthly':
             interval = relativedelta(months=1, days=-1)
             start = datetime.date(date.year, date.month, 1)
@@ -92,23 +91,48 @@ class Sale(metaclass=PoolMeta):
                     interval = last_day - start
                 # else same as weekly
         elif period == 'daily':
-            start = datetime.date.today()
+            start = datetime.date(date.year, date.month, date.day)
             interval = relativedelta(day=0)
         return start, start + interval
 
     def _get_invoice_sale(self):
+        Config = Pool().get('sale.configuration')
         invoice = super()._get_invoice_sale()
 
         period = self.party.sale_invoice_grouping_period
-        # invoice_grouping_method is standard, shipment_address... find invoices
+        # invoice_grouping_method is standard, shipment_addres,s... find invoices
         if self.invoice_grouping_method != None and period:
             date = self._get_grouped_invoice_date()
             start, end = self._get_invoice_dates(date,
                 self.party.sale_invoice_grouping_period)
             invoice.start_date = start
             invoice.end_date = end
+
+            config = Config(1)
+            if config.fill_grouping_invoice_date:
+                invoice.invoice_date = end
         return invoice
 
+class SaleConfiguration(metaclass=PoolMeta):
+    __name__ = 'sale.configuration'
+
+    fill_grouping_invoice_date = fields.MultiValue(fields.Boolean(
+            "Fill Grouping Invoice Date"))
+
+    @classmethod
+    def multivalue_model(cls, field):
+        pool = Pool()
+        SaleConfigurationFillGroupingInvoiceDate = pool.get(
+            'sale.configuration.fill_grouping_invoice_date')
+        if field == 'fill_grouping_invoice_date':
+            return SaleConfigurationFillGroupingInvoiceDate
+        return super().multivalue_model(field)
+
+class SaleConfigurationFillGroupingInvoiceDate(ModelSQL, ModelView, ValueMixin):
+    "Sale Configuration Fill Grouping Invoice Date"
+    __name__ = 'sale.configuration.fill_grouping_invoice_date'
+
+    fill_grouping_invoice_date = fields.Boolean("Fill Grouping Invoice Date")
 
 class SaleLine(metaclass=PoolMeta):
     __name__ = 'sale.line'

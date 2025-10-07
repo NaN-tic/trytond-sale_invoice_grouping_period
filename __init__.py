@@ -13,4 +13,6 @@ def register():
         sale.Sale,
         sale.SaleLine,
         invoice.Invoice,
+        sale.SaleConfiguration,
+        sale.SaleConfigurationFillGroupingInvoiceDate,
         module='sale_invoice_grouping_period', type_='model')
