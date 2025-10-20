@@ -6,8 +6,6 @@ from trytond.model import fields, ModelSQL, ModelView, ValueMixin
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval
 
-__all__ = ['Sale', 'SaleLine', 'SaleConfigurationFillGroupingInvoiceDate']
-
 
 class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
