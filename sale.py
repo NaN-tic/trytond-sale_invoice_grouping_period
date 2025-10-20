@@ -98,7 +98,7 @@ class Sale(metaclass=PoolMeta):
         invoice = super()._get_invoice_sale()
 
         period = self.party.sale_invoice_grouping_period
-        # invoice_grouping_method is standard, shipment_addres,s... find invoices
+        # invoice_grouping_method is standard, shipment_address... find invoices
         if self.invoice_grouping_method != None and period:
             date = self._get_grouped_invoice_date()
             start, end = self._get_invoice_dates(date,
