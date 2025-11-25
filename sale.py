@@ -46,6 +46,9 @@ class Sale(metaclass=PoolMeta):
         return invoice_domain
 
     def _get_invoice_dates(self, date, period):
+        pool = Pool()
+        Date = pool.get('ir.date')
+
         if period == 'monthly':
             interval = relativedelta(months=1, days=-1)
             start = datetime.date(date.year, date.month, 1)
@@ -89,7 +92,7 @@ class Sale(metaclass=PoolMeta):
                     interval = last_day - start
                 # else same as weekly
         elif period == 'daily':
-            start = datetime.date(date.year, date.month, date.day)
+            start = Date.today()
             interval = relativedelta(day=0)
         return start, start + interval
 
