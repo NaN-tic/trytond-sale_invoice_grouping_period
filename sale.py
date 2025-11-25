@@ -45,7 +45,8 @@ class Sale(metaclass=PoolMeta):
                 ]
         return invoice_domain
 
-    def _get_invoice_dates(self, date, period):
+    @staticmethod
+    def _get_invoice_dates(date, period):
         pool = Pool()
         Date = pool.get('ir.date')
 
