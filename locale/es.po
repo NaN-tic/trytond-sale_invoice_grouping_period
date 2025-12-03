@@ -14,6 +14,10 @@ msgctxt "field:party.party,sale_invoice_grouping_period:"
 msgid "Sale Invoice Grouping Period"
 msgstr "Período de agrupación de facturas de ventas"
 
+msgctxt "field:sale.configuration,fill_grouping_invoice_date:"
+msgid "Fill Grouping Invoice Date"
+msgstr "Llenar fecha factura agrupada"
+
 msgctxt ""
 "field:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
 msgid "Sale Invoice Grouping Period"

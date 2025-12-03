@@ -53,6 +53,14 @@ class Test(unittest.TestCase):
         sale_user.groups.append(sale_group)
         sale_user.save()
 
+        # Create sale user
+        sale_admin_user = User()
+        sale_admin_user.name = 'Sale Admin'
+        sale_admin_user.login = 'sale_admin'
+        sale_admin_group, = Group.find([('name', '=', 'Sales Administrator')])
+        sale_admin_user.groups.append(sale_admin_group)
+        sale_admin_user.save()
+
         # Create stock user
         stock_user = User()
         stock_user.name = 'Stock'
@@ -492,3 +500,29 @@ class Test(unittest.TestCase):
         self.assertEqual(invoices3[0].start_date, datetime.date(2022, 7, 4))
 
         self.assertEqual(invoices3[0].end_date, datetime.date(2022, 7, 10))
+
+        # Create yet another sale, this time with fill_grouping_invoice_date
+        # flag set to True
+        config.user = sale_admin_user.id
+        SaleConfig = Model.get('sale.configuration')
+        sale_config = SaleConfig(1)
+        sale_config.fill_grouping_invoice_date = True
+        sale_config.save()
+
+        config.user = sale_user.id
+        sale4 = Sale()
+        sale4.party = customer_weekly_break
+        sale4.sale_date = datetime.date(2022, 7, 11)
+        sale4.invoice_method = 'order'
+        sale_line = sale4.lines.new()
+        sale_line.product = product
+        sale_line.quantity = 5.0
+        sale4.click('quote')
+        sale4.click('confirm')
+        self.assertEqual(sale4.state, 'processing')
+        invoices4 = sale4.invoices
+
+        config.user = account_user.id
+        self.assertEqual(invoices4[0].start_date, datetime.date(2022, 7, 11))
+        self.assertEqual(invoices4[0].end_date, datetime.date(2022, 7, 17))
+        self.assertEqual(invoices4[0].invoice_date, datetime.date(2022, 7, 17))
