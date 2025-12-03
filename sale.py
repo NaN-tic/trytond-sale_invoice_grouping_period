@@ -97,9 +97,9 @@ class Sale(metaclass=PoolMeta):
             interval = relativedelta(day=0)
         return start, start + interval
 
-    def _get_invoice_sale(self):
+    def _get_invoice(self):
         Config = Pool().get('sale.configuration')
-        invoice = super()._get_invoice_sale()
+        invoice = super()._get_invoice()
 
         period = self.party.sale_invoice_grouping_period
         # invoice_grouping_method is standard, shipment_address... find invoices
