@@ -4,7 +4,6 @@ from trytond.model import fields
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval, Bool
 
-__all__ = ['Party', 'PartySaleInvoiceGroupingMethod']
 
 GROUPING_PERIODS = [
     (None, 'Standard'),
