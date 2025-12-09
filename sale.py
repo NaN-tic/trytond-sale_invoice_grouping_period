@@ -115,6 +115,7 @@ class Sale(metaclass=PoolMeta):
                 invoice.invoice_date = end
         return invoice
 
+
 class SaleConfiguration(metaclass=PoolMeta):
     __name__ = 'sale.configuration'
 
@@ -130,11 +131,13 @@ class SaleConfiguration(metaclass=PoolMeta):
             return SaleConfigurationFillGroupingInvoiceDate
         return super().multivalue_model(field)
 
+
 class SaleConfigurationFillGroupingInvoiceDate(ModelSQL, ModelView, ValueMixin):
     "Sale Configuration Fill Grouping Invoice Date"
     __name__ = 'sale.configuration.fill_grouping_invoice_date'
 
     fill_grouping_invoice_date = fields.Boolean("Fill Grouping Invoice Date")
+
 
 class SaleLine(metaclass=PoolMeta):
     __name__ = 'sale.line'
