@@ -259,7 +259,7 @@ class Test(unittest.TestCase):
         Warning = Model.get('res.user.warning')
         sale = Sale()
         sale.party = customer_weekly
-        sale.invoice_method = 'shipment'
+        sale.invoice_method = 'fulfillment'
         sale_line = sale.lines.new()
         sale_line.product = product
         sale_line.quantity = 2.0

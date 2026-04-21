@@ -19,7 +19,7 @@ class Sale(metaclass=PoolMeta):
 
     def _get_grouped_invoice_date(self):
         date = None
-        if self.invoice_method == 'shipment':
+        if self.invoice_method == 'fulfillment':
             for line in self.lines:
                 if line.type != 'line':
                     continue
