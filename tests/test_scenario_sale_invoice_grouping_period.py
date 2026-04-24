@@ -282,6 +282,9 @@ class Test(unittest.TestCase):
         shipment.effective_date = next_week
         shipment.save()
         shipment.click('assign_try')
+        shipment.reload()
+        if shipment.state != 'assigned':
+            shipment.click('assign_force')
 
         with self.assertRaises(MoveFutureWarning):
             try:
@@ -312,6 +315,9 @@ class Test(unittest.TestCase):
         shipment.effective_date = next_week2
         shipment.save()
         shipment.click('assign_try')
+        shipment.reload()
+        if shipment.state != 'assigned':
+            shipment.click('assign_force')
 
         with self.assertRaises(MoveFutureWarning):
             try:
