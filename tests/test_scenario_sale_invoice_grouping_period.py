@@ -71,7 +71,10 @@ class Test(unittest.TestCase):
         stock_user.name = 'Stock'
         stock_user.login = 'stock'
         stock_group, = Group.find([('name', '=', 'Stock')])
+        stock_force_group, = Group.find([
+            ('name', '=', 'Stock Force Assignment')])
         stock_user.groups.append(stock_group)
+        stock_user.groups.append(stock_force_group)
         stock_user.save()
 
         # Create account user
@@ -310,7 +313,7 @@ class Test(unittest.TestCase):
         self.assertEqual(shipment.state, 'done')
         config.user = sale_user.id
         sale.reload()
-        shipment, _ = sale.shipments
+        shipment, = [s for s in sale.shipments if s.state == 'waiting']
         config.user = stock_user.id
         shipment.effective_date = next_week2
         shipment.save()
