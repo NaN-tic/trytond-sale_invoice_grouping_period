@@ -302,7 +302,7 @@ class Test(unittest.TestCase):
         self.assertEqual(shipment.state, 'done')
         config.user = sale_user.id
         sale.reload()
-        shipment, _ = sale.shipments
+        shipment, = [s for s in sale.shipments if s.state == 'waiting']
         config.user = stock_user.id
         shipment.effective_date = next_week2
         shipment.save()
