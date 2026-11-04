@@ -1,0 +1,221 @@
+#
+msgid ""
+msgstr ""
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgctxt "field:account.invoice,end_date:"
+msgid "End Date"
+msgstr "结账日期"
+
+msgctxt "field:account.invoice,start_date:"
+msgid "Start Date"
+msgstr "启用日期"
+
+msgctxt "field:party.party,sale_invoice_grouping_period:"
+msgid "Sale Invoice Grouping Period"
+msgstr "销售发票分组周期"
+
+msgctxt "field:sale.configuration,fill_grouping_invoice_date:"
+msgid "Fill Grouping Invoice Date"
+msgstr "填写分组发票日期"
+
+msgctxt ""
+"field:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Sale Invoice Grouping Period"
+msgstr "销售发票分组周期"
+
+msgctxt "field:sale.line,invoice_date:"
+msgid "Invoice Date"
+msgstr "发票日期"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Biweekly"
+msgstr "每两周"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Daily"
+msgstr "日"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Every Ten Days"
+msgstr "每十天"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Monthly"
+msgstr "每月"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Standard"
+msgstr "标准"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Friday"
+msgstr "每周 - 星期五"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Friday - monthly close"
+msgstr "每周 - 星期五 - 月末结算"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Monday"
+msgstr "每周 - 星期一"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Monday - monthly close"
+msgstr "每周 - 星期一 - 月末结算"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Saturday"
+msgstr "每周 - 星期六"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Saturday - monthly close"
+msgstr "每周 - 星期六 - 月末结算"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Sunday"
+msgstr "每周 - 星期日"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Sunday - monthly close"
+msgstr "每周 - 星期日 - 月末结算"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Thursday"
+msgstr "每周 - 星期四"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Thursday - monthly close"
+msgstr "每周 - 星期四 - 月末结算"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Tuesday"
+msgstr "每周 - 星期二"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Tuesday - monthly close"
+msgstr "每周 - 星期二 - 月末结算"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Wednesday"
+msgstr "每周 - 星期三"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Wednesday - monthly close"
+msgstr "每周 - 星期三 - 月末结算"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Biweekly"
+msgstr "每两周"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Daily"
+msgstr "日"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Every Ten Days"
+msgstr "每十天"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Monthly"
+msgstr "每月"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Standard"
+msgstr "标准"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Friday"
+msgstr "每周 - 星期五"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Friday - monthly close"
+msgstr "每周 - 星期五 - 月末结算"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Monday"
+msgstr "每周 - 星期一"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Monday - monthly close"
+msgstr "每周 - 星期一 - 月末结算"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Saturday"
+msgstr "每周 - 星期六"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Saturday - monthly close"
+msgstr "每周 - 星期六 - 月末结算"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Sunday"
+msgstr "每周 - 星期日"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Sunday - monthly close"
+msgstr "每周 - 星期日 - 月末结算"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Thursday"
+msgstr "每周 - 星期四"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Thursday - monthly close"
+msgstr "每周 - 星期四 - 月末结算"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Tuesday"
+msgstr "每周 - 星期二"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Tuesday - monthly close"
+msgstr "每周 - 星期二 - 月末结算"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Wednesday"
+msgstr "每周 - 星期三"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Wednesday - monthly close"
+msgstr "每周 - 星期三 - 月末结算"
+
+msgctxt "view:account.invoice:"
+msgid "Grouping Period"
+msgstr "分组周期"
+
+msgctxt ""
+"field:sale.configuration.fill_grouping_invoice_date,fill_grouping_invoice_date:"
+msgid "Fill Grouping Invoice Date"
+msgstr "填写分组发票日期"
+
+msgctxt "model:sale.configuration.fill_grouping_invoice_date,name:"
+msgid "Sale Configuration Fill Grouping Invoice Date"
+msgstr "销售填写分组发票日期配置"
+
+msgctxt "model:sale.configuration.fill_grouping_invoice_date,string:"
+msgid "Sale Configuration Fill Grouping Invoice Date"
+msgstr "销售填写分组发票日期配置"
