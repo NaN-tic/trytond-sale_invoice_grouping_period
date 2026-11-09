@@ -1,0 +1,221 @@
+#
+msgid ""
+msgstr ""
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgctxt "field:account.invoice,end_date:"
+msgid "End Date"
+msgstr "Befejező dátum"
+
+msgctxt "field:account.invoice,start_date:"
+msgid "Start Date"
+msgstr "Kezdődátum"
+
+msgctxt "field:party.party,sale_invoice_grouping_period:"
+msgid "Sale Invoice Grouping Period"
+msgstr "Értékesítési számlák csoportosítási időszaka"
+
+msgctxt "field:sale.configuration,fill_grouping_invoice_date:"
+msgid "Fill Grouping Invoice Date"
+msgstr "Csoportosított számla dátumának kitöltése"
+
+msgctxt ""
+"field:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Sale Invoice Grouping Period"
+msgstr "Értékesítési számlák csoportosítási időszaka"
+
+msgctxt "field:sale.line,invoice_date:"
+msgid "Invoice Date"
+msgstr "Számla kelte"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Biweekly"
+msgstr "Kéthetente"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Daily"
+msgstr "napi"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Every Ten Days"
+msgstr "Tíznaponta"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Monthly"
+msgstr "havi"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Standard"
+msgstr "szabályos"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Friday"
+msgstr "Hetente – Péntek"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Friday - monthly close"
+msgstr "Hetente – Péntek – Havi zárással"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Monday"
+msgstr "Hetente – Hétfő"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Monday - monthly close"
+msgstr "Hetente – Hétfő – Havi zárással"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Saturday"
+msgstr "Hetente – Szombat"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Saturday - monthly close"
+msgstr "Hetente – Szombat – Havi zárással"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Sunday"
+msgstr "Hetente – Vasárnap"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Sunday - monthly close"
+msgstr "Hetente – Vasárnap – Havi zárással"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Thursday"
+msgstr "Hetente – Csütörtök"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Thursday - monthly close"
+msgstr "Hetente – Csütörtök – Havi zárással"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Tuesday"
+msgstr "Hetente – Kedd"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Tuesday - monthly close"
+msgstr "Hetente – Kedd – Havi zárással"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Wednesday"
+msgstr "Hetente – Szerda"
+
+msgctxt "selection:party.party,sale_invoice_grouping_period:"
+msgid "Weekly - Wednesday - monthly close"
+msgstr "Hetente – Szerda – Havi zárással"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Biweekly"
+msgstr "Kéthetente"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Daily"
+msgstr "napi"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Every Ten Days"
+msgstr "Tíznaponta"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Monthly"
+msgstr "havi"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Standard"
+msgstr "szabályos"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Friday"
+msgstr "Hetente – Péntek"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Friday - monthly close"
+msgstr "Hetente – Péntek – Havi zárással"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Monday"
+msgstr "Hetente – Hétfő"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Monday - monthly close"
+msgstr "Hetente – Hétfő – Havi zárással"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Saturday"
+msgstr "Hetente – Szombat"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Saturday - monthly close"
+msgstr "Hetente – Szombat – Havi zárással"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Sunday"
+msgstr "Hetente – Vasárnap"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Sunday - monthly close"
+msgstr "Hetente – Vasárnap – Havi zárással"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Thursday"
+msgstr "Hetente – Csütörtök"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Thursday - monthly close"
+msgstr "Hetente – Csütörtök – Havi zárással"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Tuesday"
+msgstr "Hetente – Kedd"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Tuesday - monthly close"
+msgstr "Hetente – Kedd – Havi zárással"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Wednesday"
+msgstr "Hetente – Szerda"
+
+msgctxt ""
+"selection:party.party.sale_invoice_grouping_method,sale_invoice_grouping_period:"
+msgid "Weekly - Wednesday - monthly close"
+msgstr "Hetente – Szerda – Havi zárással"
+
+msgctxt "view:account.invoice:"
+msgid "Grouping Period"
+msgstr "Csoportosítási időszak"
+
+msgctxt ""
+"field:sale.configuration.fill_grouping_invoice_date,fill_grouping_invoice_date:"
+msgid "Fill Grouping Invoice Date"
+msgstr "Csoportosított számla dátumának kitöltése"
+
+msgctxt "model:sale.configuration.fill_grouping_invoice_date,name:"
+msgid "Sale Configuration Fill Grouping Invoice Date"
+msgstr "Csoportosított értékesítési számla dátumkitöltésének beállítása"
+
+msgctxt "model:sale.configuration.fill_grouping_invoice_date,string:"
+msgid "Sale Configuration Fill Grouping Invoice Date"
+msgstr "Csoportosított értékesítési számla dátumkitöltésének beállítása"
